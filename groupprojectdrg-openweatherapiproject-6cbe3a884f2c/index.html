@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='style.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <title>Api Weather App</title>
+</head>
+<body onload="checkCookie()">
+  <header>
+  <!-- hamburger -->
+  <header>
+    <nav class="navbar">
+      <div class="name">DRG Group Project</div>
+      <a href="#" title='#' id="nav-toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </a>
+      <div id="nav-items">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- dark mode -->
+<button id='dark-mode-btn' class='button-27' onclick="myFunction()">dark mode</button>
+<!-- end of dark mode -->
+  </header>
+  <!-- end of hamburger -->
+  </header>
+  <section class='main-body'>
+    <!-- magic text -->
+    <p id='magic-text-title'>
+      The 
+      <span class="magic">
+        <span class="magic-star">
+          <svg viewBox="0 0 512 512">
+          <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+          </svg>
+        </span>
+        <span class="magic-star">
+          <svg viewBox="0 0 512 512">
+          <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+          </svg>
+        </span>
+        <span class="magic-star">
+          <svg viewBox="0 0 512 512">
+          <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+          </svg>
+        </span>
+        <a class='magic-text' id='purple-beard-link' href="https://purplebeard.co.uk/" target="_blank> <span class="magic-text"> Purple Beard</span></a>
+      </span>
+      Front-end Development BootCamp
+    </p>
+    <!-- end of  magic text -->
+  <div class="container">
+<div class="header">
+<h1 id='card-header' class='card'>What's the Weather?</h1>
+</div>
+<div class="location">
+  Enter the city name to find out the weather today.
+</div>
+<div class="weather-container">
+  <div class="types">
+    <div class="title">Temperature</div>
+    <div id="results"></div>
+    </div>
+  <div class="types">
+    <div class="title" >Wind</div>
+    <div class="value"><p id='wind'></p></div>
+</div>
+</div>
+
+<!-- G's form in case R will have a different approach :) -->
+<br>
+<form actione="#" id="wrapper">
+  <label for="locInput"></label>
+  <input type="text" placeholder="Type city" id="locInput" />
+  <button type='submit' id="adding-button">Search</button>
+</form>
+<br>
+</div>
+<!-- end of G's form in case R will have a different approach :) -->
+<div id="earth"></div>
+<!-- destinations list -->
+<div class="container">
+<p>If you like the weather, create your potential holiday destinations here</p>
+<div id='destinations-list-wrapper'>
+  <h1 id='dynamic-destinations-list'> Holiday destinations</h1>
+  <label for="item"></label>
+  <input type="text" placeholder='Enter a city name' name="item" id="item">
+  <button class='glow-on-hover'>Add</button>
+</div>
+<ul id='destinations-list'>
+</ul>
+<br>
+
+<!-- end of destinations list -->
+<!-- polaroid pic -->
+<br><br>
+<div class="polaroid__wrapper">
+  <figure class="polaroid">
+    <img src="https://media4.giphy.com/media/AErExHJVxRbkm5hPkB/giphy.gif?cid=ecf05e47nbnwvqm34vrfj0itjiex7hejjatg8nkw79lchva1&rid=giphy.gif&ct=g" alt="holiday views" class="polaroid__img">
+    <figcaption class="polaroid__caption">Click me for the mood!</figcaption>
+  </figure>
+  <div class="polaroid__particles">
+  </div>
+</div>
+</div>
+<!-- end of polaroid pic -->
+
+  <!-- accordion -->
+  <section class="accordion">
+    <div class="container">
+    <h1 id='card'>FAQ</h1>
+    <div class="accordion-item">
+      <h3 class="accordion-item-header">FAQ 1</h3>
+      <div class="hide-accordion">
+        <p class="accordion-item-body-content">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem
+          ducimus error, aliquam fuga magni ratione fugiat esse in, incidunt
+          dolores optio molestiae excepturi officiis labore exercitationem et
+          obcaecati vero veniam.
+        </p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h3 class="accordion-item-header">FAQ 2</h3>
+      <div class="hide-accordion">
+        <p class="accordion-item-body-content">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem
+          ducimus error, aliquam fuga magni ratione fugiat esse in, incidunt
+          dolores optio molestiae excepturi officiis labore exercitationem et
+          obcaecati vero veniam.
+        </p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h3 class="accordion-item-header">FAQ 3</h3>
+      <div class="hide-accordion">
+        <p class="accordion-item-body-content">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem
+          ducimus error, aliquam fuga magni ratione fugiat esse in, incidunt
+          dolores optio molestiae excepturi officiis labore exercitationem et
+          obcaecati vero veniam.
+        </p>
+      </div>
+    </div>
+  </section>
+  <br>
+</div>
+  <!-- end of accordion -->
+  <!-- calendar -->
+  <div id="cal-wrap">
+    <!-- (A) PERIOD SELECTOR -->
+    <div id="cal-date">
+      <select id="cal-mth"></select>
+      <select id="cal-yr"></select>
+    </div>
+
+    <!-- (B) CALENDAR -->
+    <div id="cal-container"></div>
+
+    <!-- (C) EVENT FORM -->
+    <form id="cal-event">
+      <h1 id="evt-head"></h1>
+      <div id="evt-date"></div>
+      <textarea id="evt-details" required></textarea>
+      <input id="evt-close" type="button" value="Close"/>
+      <input id="evt-del" type="button" value="Delete"/>
+      <input id="evt-save" type="submit" value="Save"/>
+    </form>
+  </div>
+  
+  <!-- end of calendar -->
+</section>
+  <!-- promise -->
+  <h1 id='promise'></h1>
+  <!-- end of promise -->
+  
+ <!-- contacts links -->
+ <style>
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400');
+  </style>
+  <div class="contact">
+  <ul id='contacts-links'>
+    <li>
+      <a href="#">
+        <i class="fa fa-linkedin" aria-hidden="true"></i>
+        <span> - LinkedIn</span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        <span> - Twitter</span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        <span> - GitHub</span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+        <span> - Email</span>
+      </a>
+    </li>
+    </div>
+ <!-- end of contacts links -->
+ 
+ <!-- scroll to top btn -->
+ <button onclick="topFunction()" id="toTopBtn" title="Go to top">Top</button>
+ <!-- end of scroll to top btn -->
+ <script src='app.js'></script> 
+</body>
+</html>
